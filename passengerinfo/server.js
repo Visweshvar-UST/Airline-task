@@ -37,6 +37,19 @@ const Customer = mongoose.model('Customer', {
       res.status(500).json({ error: 'Error fetching product' });
     }
   });
+
+  app.get("/customer/flight/;id", async (req, res) => {
+    try {
+      const customer = await Customer.find({flightId: req.params.id});
+    if (customer) {
+      res.json(customer);
+    } else {
+      res.status(404).json({ error: 'Product not found' });
+    }
+    } catch (error) {
+      res.status(500).json({ error: 'Error fetching product' });
+    }
+  });
   
   app.post('/customer', async (req, res) => {
     try {
