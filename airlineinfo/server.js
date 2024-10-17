@@ -28,7 +28,7 @@ const Airline = mongoose.model('Airline', {
   app.get('/airline/flight/:id', async (req, res) => {
     try {
       const flight = await axios.get(`http://localhost:3002/flight/airline/${req.params.id}`);
-      res.json(flight);
+      res.json(flight.data);
     } catch (error) {
       res.status(500).json({ error: 'Error fetching products' });
     }
@@ -37,7 +37,7 @@ const Airline = mongoose.model('Airline', {
   app.get('/airline/:id', async (req, res) => {
     try {
       const airline = await Airline.findById(req.params.id);
-      if (airline) {
+      if (airline.data) {
         res.json(airline);
       } else {
         res.status(404).json({ error: 'Product not found' });
