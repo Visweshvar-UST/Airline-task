@@ -43,6 +43,8 @@ const Customer = mongoose.model('Customer', {
       const customer = await Customer.find({flightId: req.params.id});
     if (customer) {
       res.json(customer);
+      console.log("asdasd");
+      
     } else {
       res.status(404).json({ error: 'Product not found' });
     }

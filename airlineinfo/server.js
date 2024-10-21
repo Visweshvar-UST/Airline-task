@@ -17,6 +17,8 @@ const Airline = mongoose.model('Airline', {
   });
   
   app.get('/airline', async (req, res) => {
+    console.log(req);
+    
     try {
       const airline = await Airline.find();
       res.json(airline);
